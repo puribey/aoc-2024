@@ -1,4 +1,10 @@
-const { parseInput, orderLists, getDistance, sumDistance } = require("./index");
+const {
+  parseInput,
+  orderLists,
+  getDistance,
+  sumDistance,
+  getTotalDistance,
+} = require("./index");
 
 const exampleInput = `
 3   4
@@ -27,5 +33,8 @@ describe("Day 1", () => {
   });
   test("sumDistance", () => {
     expect(sumDistance([2, 1, 0, 1, 2, 5])).toEqual(11);
+  });
+  test("FINAL Part 1 getTotalDistance", () => {
+    expect(getTotalDistance(exampleInput)).toEqual(11);
   });
 });

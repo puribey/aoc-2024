@@ -41,13 +41,38 @@ const sumDistance = (input) => {
   return input.reduce((acc, item) => acc + item, 0);
 };
 
-const main = () => {
-  const parsedInput = parseInput(inputFromAdvent);
-  const distance = getDistance(parsedInput);
-  const totalDistance = sumDistance(distance);
-  console.log(totalDistance);
+const getTotalDistance = (input) => {
+  const [arrayA, arrayB] = input
+    .trim()
+    .split("\n")
+    .reduce(
+      (acc, line) => {
+        const [a, b] = line.match(/\S+/g).map(Number);
+        acc[0].push(a);
+        acc[1].push(b);
+        return acc;
+      },
+      [[], []]
+    );
+
+  arrayA.sort((a, b) => a - b);
+  arrayB.sort((a, b) => a - b);
+
+  return arrayA.reduce((total, a, index) => {
+    return total + Math.abs(a - arrayB[index]);
+  }, 0);
 };
 
-module.exports = { parseInput, orderLists, getDistance, sumDistance };
+const main = () => {
+  console.log(getTotalDistance(inputFromAdvent));
+};
 
-main();
+module.exports = {
+  parseInput,
+  orderLists,
+  getDistance,
+  sumDistance,
+  getTotalDistance,
+};
+
+// main();
