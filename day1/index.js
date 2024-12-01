@@ -63,8 +63,23 @@ const getTotalDistance = (input) => {
   }, 0);
 };
 
-const main = () => {
+const main1 = () => {
   console.log(getTotalDistance(inputFromAdvent));
+};
+
+const getTotalSimilarity = (input) => {
+  const [arrayA, arrayB] = parseInput(input);
+  return arrayA.reduce((total, arrayAItem) => {
+    return (
+      total +
+      arrayB.filter((arrayBItem) => arrayBItem === arrayAItem).length *
+        arrayAItem
+    );
+  }, 0);
+};
+
+const main2 = () => {
+  console.log(getTotalSimilarity(inputFromAdvent));
 };
 
 module.exports = {
@@ -73,6 +88,8 @@ module.exports = {
   getDistance,
   sumDistance,
   getTotalDistance,
+  getTotalSimilarity,
 };
 
-// main();
+// main1();
+main2();

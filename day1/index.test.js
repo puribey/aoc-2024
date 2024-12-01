@@ -4,6 +4,7 @@ const {
   getDistance,
   sumDistance,
   getTotalDistance,
+  getTotalSimilarity,
 } = require("./index");
 
 const exampleInput = `
@@ -36,5 +37,8 @@ describe("Day 1", () => {
   });
   test("FINAL Part 1 getTotalDistance", () => {
     expect(getTotalDistance(exampleInput)).toEqual(11);
+  });
+  test("FINAL Part 2 getTotalSimilarity", () => {
+    expect(getTotalSimilarity(exampleInput)).toEqual(31);
   });
 });
