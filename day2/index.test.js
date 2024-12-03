@@ -2,6 +2,7 @@ const {
   parseInput,
   isArrayIncreasingOrDecreasingByUpToThree,
   getSafeReportsTotal,
+  canMakeArraySafe,
 } = require("./index");
 
 const exampleInput = `
@@ -44,7 +45,15 @@ describe("Day 2", () => {
       true
     );
   });
+  test("canMakeArraySafe", () => {
+    expect(canMakeArraySafe([7, 6, 4, 2, 1])).toBe(true);
+    expect(canMakeArraySafe([1, 2, 7, 8, 9])).toBe(false);
+    expect(canMakeArraySafe([9, 7, 6, 2, 1])).toBe(false);
+    expect(canMakeArraySafe([1, 3, 2, 4, 5])).toBe(true);
+    expect(canMakeArraySafe([8, 6, 4, 4, 1])).toBe(true);
+    expect(canMakeArraySafe([1, 3, 6, 7, 9])).toBe(true);
+  });
   test("getSafeReports", () => {
-    expect(getSafeReportsTotal(parseInput(exampleInput))).toEqual(2);
+    expect(getSafeReportsTotal(parseInput(exampleInput))).toEqual(4);
   });
 });

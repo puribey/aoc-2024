@@ -41,9 +41,21 @@ const isArrayIncreasingOrDecreasingByUpToThree = (array) => {
 };
 
 const getSafeReportsTotal = (input) => {
-  return input.filter((report) =>
-    isArrayIncreasingOrDecreasingByUpToThree(report)
-  ).length;
+  return input.filter((report) => canMakeArraySafe(report)).length;
+};
+
+const canMakeArraySafe = (array) => {
+  const len = array.length;
+
+  for (let i = 0; i < len; i++) {
+    // Create test array by spreading elements before and after current index
+    const testArray = [...array.slice(0, i), ...array.slice(i + 1)];
+    if (isArrayIncreasingOrDecreasingByUpToThree(testArray)) {
+      return true;
+    }
+  }
+
+  return false;
 };
 
 const main1 = () => {
@@ -56,7 +68,8 @@ module.exports = {
   parseInput,
   isArrayIncreasingOrDecreasingByUpToThree,
   getSafeReportsTotal,
+  canMakeArraySafe,
 };
 
-main1();
+// main1();
 // main2();
